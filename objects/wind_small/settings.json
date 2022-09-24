@@ -1,0 +1,12 @@
+{
+    "amount": 1,
+    "height turbine": 15,
+    "height measurement":10,
+    "roughness location": 0.055,
+    "power output": 15000,
+    "efficiency": 1,
+    "efficiency reformers": 1, 
+    "cut-in speed": 2.5,
+    "cut-off speed": 20,
+    "rated speed": 8.5
+}

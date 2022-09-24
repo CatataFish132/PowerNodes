@@ -4,24 +4,30 @@ using DataFrames
 
 xf = XLSX.readxlsx("data.xlsm")
 
+# ## SOLAR
 solar_pv = xf["Solar PV"]
-solar_pv_data = solar_pv["AK4:AK8763"]
+# solar_pv_data = solar_pv["AK4:AK8763"]
+solar_data = solar_pv["AJ4:AJ8763"]
 
+
+## WIND Big
 wind_big = xf["Wind"]
-wind_big_data = wind_big["AL4:AL8763"]
+# wind_big_data = wind_big["AL4:AL8763"]
 
-wind_small = xf["Wind Small"]
-wind_small_data = wind_small["AL4:AL8763"]
+wind_speed = wind_big["AJ4:AJ8763"]
 
-demand = xf["DEMAND"]
-demand_data = demand["AU4:AU8763"]
 
-ecar = xf["E-CAR"]
-ecar_data = ecar["AK4:AK8763"]*23100000
+# wind_small = xf["Wind Small"]
+# wind_small_data = wind_small["AL4:AL8763"]
 
-heat_pumps = xf["Electric heat pump"]
-heat_pumps_data = heat_pumps["AS4:AS8763"]
+# demand = xf["DEMAND"]
+# demand_data = demand["AU4:AU8763"]
 
-df = DataFrame(solar=vec(solar_pv_data), demand=vec(demand_data), wind_big=vec(wind_big_data), wind_small=vec(wind_small_data), ecar=vec(ecar_data), heatpump=vec(heat_pumps_data))
+# ecar = xf["E-CAR"]
+# ecar_data = ecar["AK4:AK8763"]
 
-CSV.write("data.csv", df)
+# heat_pumps = xf["Electric heat pump"]
+# heat_pumps_data = heat_pumps["AS4:AS8763"]
+
+df = DataFrame(wind_speed=vec(wind_speed))
+CSV.write("objects/wind_big/data.csv", df)
