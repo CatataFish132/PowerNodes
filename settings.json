@@ -1,9 +1,9 @@
 {
-    "wind big": 10,
+    "wind big": 0,
     "wind small": 0,
     "solar panels": 0,
     "battery": {
-        "capacity": 332000,
+        "capacity": 100000,
         "self discharge %": 0.001,
         "charge efficiency": 0.94,
         "discharge efficiency": 0.94,

@@ -19,6 +19,9 @@ demand_data = demand["AU4:AU8763"]
 ecar = xf["E-CAR"]
 ecar_data = ecar["AK4:AK8763"]*23100000
 
-df = DataFrame(solar=vec(solar_pv_data), demand=vec(demand_data), wind_big=vec(wind_big_data), wind_small=vec(wind_small_data), ecar=vec(ecar_data))
+heat_pumps = xf["Electric heat pump"]
+heat_pumps_data = heat_pumps["AS4:AS8763"]
+
+df = DataFrame(solar=vec(solar_pv_data), demand=vec(demand_data), wind_big=vec(wind_big_data), wind_small=vec(wind_small_data), ecar=vec(ecar_data), heatpump=vec(heat_pumps_data))
 
 CSV.write("data.csv", df)
