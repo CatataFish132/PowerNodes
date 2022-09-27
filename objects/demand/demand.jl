@@ -5,7 +5,7 @@ settings = JSON.parse(read(json_settings, String))
 data = DataFrame(CSV.File(open("objects/demand/data.csv")))
 
 demand = (data[!, "demand"] / 7700) * settings["houses"]
-object_dict["demand"] = demand
+electricity["demand"] = demand
 
 df = DataFrame(demand_output=vec(demand))
 CSV.write("objects/demand/output.csv", df)

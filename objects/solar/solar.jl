@@ -9,7 +9,7 @@ solar_data = data[!, "solar"]
 solar_panel_data = map(x -> min((x*settings["efficiency"]*settings["efficiency inverters"]*settings["surface area"])/1000, settings["power output"]/1000), solar_data)
 
 solar = solar_panel_data * settings["amount"]
-object_dict["solar"] = solar
+electricity["solar"] = solar
 
 df = DataFrame(solar_output=vec(solar))
 CSV.write("objects/solar/output.csv", df)

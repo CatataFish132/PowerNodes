@@ -7,7 +7,7 @@ ecar_data = data[!, "ecar"]
 
 ecar = -ecar_data * settings["amount"] * settings["demand"]
 
-object_dict["ecar"] = ecar
+electricity["ecar"] = ecar
 
 df = DataFrame(ecar_output=vec(ecar))
 CSV.write("objects/ecar/output.csv", df)

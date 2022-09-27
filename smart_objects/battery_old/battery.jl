@@ -8,10 +8,9 @@ battery_state_list = []
 function charge_battery(amount)
     global battery_state
     leftover_storage = settings_battery["capacity"] - battery_state
-    diff = amount - settings_battery["target level"]
-    if leftover_storage > (diff*settings_battery["charge efficiency"])
-        battery_state += diff*settings_battery["charge efficiency"]
-        return amount - diff
+    if leftover_storage > (amount*settings_battery["charge efficiency"])
+        battery_state += amount*settings_battery["charge efficiency"]
+        return 0
     else
         battery_state += leftover_storage
         return amount - leftover_storage * (1/settings_battery["charge efficiency"])
@@ -20,10 +19,9 @@ end
 
 function discharge_battery(amount)
     global battery_state
-    diff = amount - settings_battery["target level"]
-    if battery_state > (-diff * (1/settings_battery["discharge efficiency"]))
-        battery_state += diff * (1/settings_battery["discharge efficiency"])
-        return amount - diff
+    if battery_state > (-amount * (1/settings_battery["discharge efficiency"]))
+        battery_state += amount * (1/settings_battery["discharge efficiency"])
+        return 0
     else
         out = amount + battery_state * settings_battery["discharge efficiency"]
         battery_state = 0
@@ -36,9 +34,9 @@ function battery_input(input)
     global battery_state_list
     battery_state -= battery_state * settings_battery["self discharge"]
     output = input
-    if battery_state < settings_battery["capacity"] && output > settings_battery["target level"]
+    if input > settings_battery["grid charge power"]
         output = charge_battery(input)
-    elseif input < settings_battery["target level"]
+    elseif input < settings_battery["grid discharge power"]
         output = discharge_battery(input)
     end
     append!(battery_state_list, battery_state)

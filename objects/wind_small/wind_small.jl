@@ -23,7 +23,7 @@ for i in eachindex(wind_corrected)
     append!(wind_power_small, power)
 end
 
-object_dict["wind-small"] = wind_power_small*settings["amount"]
+electricity["wind-small"] = wind_power_small*settings["amount"]
 
 df = DataFrame(wind_small_output=vec(wind_power_small), corrected_wind_speed=vec(wind_corrected))
 CSV.write("objects/wind_small/output.csv", df)
