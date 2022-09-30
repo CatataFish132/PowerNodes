@@ -1,0 +1,11 @@
+{
+    "energy per car per day": -8.21,
+    "amount of cars": 7700,
+    "start charging time": 18,
+    "stop charging time": 8,
+    "capacity per car": 40,
+    "charging efficiency": 0.94,
+    "grid target level": 0,
+    "grid min level": -10000,
+    "charging speed per car": 5
+}

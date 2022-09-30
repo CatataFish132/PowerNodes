@@ -4,6 +4,7 @@ settings = JSON.parse(read(json_settings, String))
 
 data = DataFrame(CSV.File(open("objects/ecar/data.csv")))
 ecar_data = data[!, "ecar"]
+ecar_data = ecar_data
 
 ecar = -ecar_data * settings["amount"] * settings["demand"]
 

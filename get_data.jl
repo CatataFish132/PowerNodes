@@ -19,6 +19,12 @@ wind_speed = wind_big["AJ4:AJ8763"]
 temperature = xf["Electric heat pump"]
 temp_data = temperature["AJ4:AJ8763"]
 
+heat = xf["DEMAND"]
+heat_demand_data = heat["AY4:AY8763"]
+
+temp = xf["Electric heat pump"]
+temp_data = temp["AJ4:AJ8763"]
+
 # wind_small = xf["Wind Small"]
 # wind_small_data = wind_small["AL4:AL8763"]
 
@@ -32,4 +38,4 @@ temp_data = temperature["AJ4:AJ8763"]
 # heat_pumps_data = heat_pumps["AS4:AS8763"]
 
 df = DataFrame(temperature=vec(temp_data))
-CSV.write("smart_objects/hybrid-heatpump/data.csv", df)
+CSV.write("smart_objects/smart_heatpump/data.csv", df)
