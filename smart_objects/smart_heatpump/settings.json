@@ -1,6 +1,8 @@
 {
-    "max draw": 10000,
+    "max draw": 15400,
     "temperature of water": 40,
     "carnot factor": 0.3,
-    "target grid level": -10000
+    "target grid level": 0,
+    "min grid level": -10000,
+    "geo": true
 }

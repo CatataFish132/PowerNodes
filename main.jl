@@ -13,7 +13,7 @@ include("objects/wind_small/wind_small.jl")
 include("objects/solar/solar.jl")
 # include("objects/ecar/ecar.jl")
 include("objects/demand/demand.jl")
-# include("smart_objects/battery/battery.jl")
+include("smart_objects/battery/battery.jl")
 include("smart_objects/curtailment/curtailment.jl")
 include("smart_objects/smart_ecar/smart_ecar.jl")
 
@@ -35,9 +35,9 @@ function Calculate()
     for i in eachindex(electricity_matrix[1,:])
         append!(output, sum(electricity_matrix[:,i]))
         append!(output_heat, sum(heat_matrix[:,i]))
-        # output[i] = battery_input(output[i])
         output[i] = input_ecar(output[i], i)
         output[i] = input_smart_heatpump(output[i], i)
+        output[i] = battery_input(output[i])
         output[i] = input_curtailment(output[i])
 
         output_heat[i] = input_ecovat(output_heat[i])
@@ -47,10 +47,10 @@ end
 
 results = Calculate()
 # plot(results[2])
-plot(results[1])
+# plot(results[1])
 
-plot(car_battery_list/maximum(car_battery_list)*100)
+# plot(car_battery_list/maximum(car_battery_list)*100)
 
 # plot(ecovat_state_list/3700000)
-# plot(reverse(sort(results[1])))
+plot(reverse(sort(results[1])))
 # plot(battery_state_list)

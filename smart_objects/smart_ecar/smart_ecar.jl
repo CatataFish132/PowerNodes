@@ -10,6 +10,9 @@ function input_ecar(e, i)
     append!(car_battery_list, car_battery_state)
     time = i % 24
     if i % 24 == 16
+        if settings_ecar["charge at work"]
+            car_battery_state = settings_ecar["amount of cars"]*(settings_ecar["capacity per car"] - settings_ecar["energy per car per day"])
+        end
         car_battery_state += settings_ecar["energy per car per day"] * settings_ecar["amount of cars"]
     end
     if ( time < settings_ecar["stop charging time"] || time > settings_ecar["start charging time"] )

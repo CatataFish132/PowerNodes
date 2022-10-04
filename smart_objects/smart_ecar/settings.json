@@ -7,5 +7,7 @@
     "charging efficiency": 0.94,
     "grid target level": 0,
     "grid min level": -10000,
-    "charging speed per car": 5
+    "charging speed per car": 5,
+    "charge at work": true,
+    "charge speed %": 0.5
 }
