@@ -1,9 +1,9 @@
 {
-    "capacity": 100000,
+    "capacity": 10000,
     "self discharge": 0.001,
     "charge efficiency": 0.94,
     "discharge efficiency": 0.94,
     "starting kwh": 0,
-    "grid discharge power": 1000,
-    "grid charge power": 10000 
+    "grid discharge power": 0,
+    "grid charge power": 0 
 }

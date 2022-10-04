@@ -8,7 +8,7 @@ ecovat_state_list = []
 function charge_ecovat(input)
     global ecovat_state
     output = 0
-    ecovat_state += input
+    ecovat_state += input * settings_ecovat["efficiency"]^-1
     if ecovat_state > settings_ecovat["capacity"]
         output = ecovat_state - settings_ecovat["capacity"]
         ecovat_state = settings_ecovat["capacity"]
@@ -19,7 +19,7 @@ end
 function discharge_ecovat(input)
     global ecovat_state
     output = 0
-    ecovat_state += input
+    ecovat_state += input * settings_ecovat["efficiency"]^-1
     if ecovat_state < 0
         output = ecovat_state
         ecovat_state = 0

@@ -27,25 +27,29 @@ function input_smart_heatpump(e, i)
     if available_e > 0
         if diff > performance[i]*draw
             charge_ecovat(performance[i]*draw)
-            return e - draw
+            # return e - draw
+            e = e - draw
         else
             charge_ecovat(diff)
-            return e - (diff/performance[i])
+            # return e - (diff/performance[i])
+            e = e - (diff/performance[i])
         end
     end
-    if ecovat_state/settings_ecovat["capacity"]<0.4
-        draw = e - settings_smart_heatpump["min grid level"]
+    
+    if (ecovat_state/settings_ecovat["capacity"])<=settings_smart_heatpump["force charge under"]
+        draw = (settings_ecovat["capacity"]*settings_smart_heatpump["force charge to"] - ecovat_state)*(performance[i]^-1)
         if draw > settings_smart_heatpump["max draw"]
             draw = settings_smart_heatpump["max draw"]
         end
+        println(draw)
         if diff > performance[i]*draw
             charge_ecovat(performance[i]*draw)
-            return e - draw
+            e = e - draw
         else
             charge_ecovat(diff)
-            return e - (diff/performance[i])
+            e = e - (diff/performance[i])
         end
     end
     return e
-
 end
+

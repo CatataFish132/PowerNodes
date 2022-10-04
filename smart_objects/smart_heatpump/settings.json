@@ -4,5 +4,7 @@
     "carnot factor": 0.3,
     "target grid level": 0,
     "min grid level": -10000,
-    "geo": true
+    "geo": true,
+    "force charge under": 0.6,
+    "force charge to": 0.6
 }
