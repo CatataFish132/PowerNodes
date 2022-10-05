@@ -8,6 +8,7 @@ using QuadGK
 electricity = Dict()
 heat = Dict()
 
+include("plot.jl")
 include("objects/wind_big/wind_big.jl")
 include("objects/wind_small/wind_small.jl")
 include("objects/solar/solar.jl")
@@ -46,10 +47,10 @@ end
 
 results = Calculate()
 # plot(results[2])
-# plot(results[1])
+plot(results[1])
 
 # plot(car_battery_list/maximum(car_battery_list)*100)
 
 # plot(ecovat_state_list/3700000)
-plot(reverse(sort(results[1])))
+# plot(reverse(sort(results[1])))
 # plot(battery_state_list)

@@ -1,23 +1,18 @@
 json_settings = open("objects/demand/settings.json")
-settings = Dict()
-settings = JSON.parse(read(json_settings, String))
+settings_demand = Dict()
+settings_demand = JSON.parse(read(json_settings, String))
 
-data = DataFrame(CSV.File(open("objects/demand/data.csv")))
+function generate_demand(settings)
+    data = DataFrame(CSV.File(open("objects/demand/data.csv")))
 
-demand = (data[!, "demand"] / 7700) * settings["houses"]
-electricity["demand"] = demand
+    demand = (data[!, "demand"] / 7700) * settings["houses"]
+    electricity["demand"] = demand
 
-df = DataFrame(demand_output=vec(demand))
-CSV.write("objects/demand/output.csv", df)
+    df = DataFrame(demand_output=vec(demand))
+    CSV.write("objects/demand/output.csv", df)
 
-plot(vec(demand))
-savefig("objects/demand/output_year.png")
+    return demand
+end
 
-plot(vec(demand[1:(24*31)]))
-savefig("objects/demand/output_month.png")
-
-plot(vec(demand[1:(24*7)]))
-savefig("objects/demand/output_week.png")
-
-plot(vec(demand[1:(24)]))
-savefig("objects/demand/output_day.png")
+demand = generate_demand(settings_demand)
+# plot_data("objects/demand", vec(demand))
