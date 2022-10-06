@@ -14,4 +14,4 @@ function generate_heat_demand(settings)
 end
 
 heat_demand_total = generate_heat_demand(settings_heat_demand)
-plot_data("objects/heat_demand", heat_demand_total)
+plot_data("objects/heat_demand", heat_demand_total, "Heat Demand")

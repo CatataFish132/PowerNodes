@@ -42,3 +42,10 @@ function ecovat_diff()
     global ecovat_state
     return settings_ecovat["capacity"] - ecovat_state
 end
+
+function reset_ecovat()
+    global ecovat_state
+    global ecovat_state_list
+    ecovat_state = settings_ecovat["start"]
+    ecovat_state_list = []
+end

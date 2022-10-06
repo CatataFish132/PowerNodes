@@ -28,6 +28,6 @@ function generate_wind_big(settings)
 end
 
 wing_power_big = generate_wind_big(settings_wind_big)
-plot_data("objects/wind_big", wing_power_big)
+plot_data("objects/wind_big", wing_power_big, "Wind-big Generation")
 # df = DataFrame(wind_big_output=vec(wind_power), corrected_wind_speed=vec(wind_corrected))
 # CSV.write("objects/wind_big/output.csv", df)

@@ -4,24 +4,27 @@ settings_ecar = JSON.parse(read(json_settings, String))
 
 car_battery_state = settings_ecar["capacity per car"] * settings_ecar["amount of cars"]
 car_battery_list = []
+
 function input_ecar(e, i)
     global car_battery_list
     global car_battery_state
-    append!(car_battery_list, car_battery_state)
+    # append!(car_battery_list, car_battery_state)
     time = i % 24
     if i % 24 == 16
         if settings_ecar["charge at work"]
-            car_battery_state = settings_ecar["amount of cars"]*(settings_ecar["capacity per car"] - settings_ecar["energy per car per day"])
+            car_battery_state = settings_ecar["capacity per car"] * settings_ecar["amount of cars"] + settings_ecar["amount of cars"] * settings_ecar["energy per car per day"]
+        else
+            car_battery_state += settings_ecar["energy per car per day"] * settings_ecar["amount of cars"]
         end
-        car_battery_state += settings_ecar["energy per car per day"] * settings_ecar["amount of cars"]
     end
     if ( time < settings_ecar["stop charging time"] || time > settings_ecar["start charging time"] )
         if e > settings_ecar["grid target level"]
             return charge_ecar(e)
-        elseif car_battery_state/(settings_ecar["capacity per car"] * settings_ecar["amount of cars"]) < 0.6
+        elseif car_battery_state/(settings_ecar["capacity per car"] * settings_ecar["amount of cars"]) < 0.7
             return force_charge_ecar(e)
         end
     end
+    append!(car_battery_list, car_battery_state)
     return e
 end
 
@@ -50,3 +53,10 @@ function force_charge_ecar(amount)
         return amount - leftover_storage * (1/settings_ecar["charging efficiency"])
     end
 end 
+
+function reset_ecar()
+    global car_battery_list
+    global car_battery_state
+    car_battery_state = settings_ecar["capacity per car"] * settings_ecar["amount of cars"]
+    car_battery_list = []
+end

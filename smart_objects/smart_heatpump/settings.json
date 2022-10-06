@@ -1,5 +1,5 @@
 {
-    "max draw": 15400,
+    "max draw": 6000,
     "temperature of water": 40,
     "carnot factor": 0.3,
     "target grid level": 0,

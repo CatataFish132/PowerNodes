@@ -1,5 +1,5 @@
 {
-    "capacity": 10000,
+    "capacity": 1000,
     "self discharge": 0.001,
     "charge efficiency": 0.94,
     "discharge efficiency": 0.94,

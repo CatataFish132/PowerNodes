@@ -28,4 +28,4 @@ function generate_wind_small(settings)
 end
 
 wind_power_small = generate_wind_small(settings_wind_small)
-plot_data("objects/wind_small", wind_power_small)
+plot_data("objects/wind_small", wind_power_small, "Wind-small Generation")

@@ -42,3 +42,10 @@ function battery_input(input)
     append!(battery_state_list, battery_state)
     return output
 end
+
+function reset_battery()
+    global battery_state
+    global battery_state_list
+    battery_state = settings_battery["starting kwh"]
+    battery_state_list = [] 
+end

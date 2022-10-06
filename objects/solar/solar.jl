@@ -15,7 +15,7 @@ function generate_solar(settings)
 end
 
 solar = generate_solar(settings_solar)
-plot_data("objects/solar", solar)
+plot_data("objects/solar", solar, "Solar Generation")
 
 df = DataFrame(solar_output=vec(solar))
 CSV.write("objects/solar/output.csv", df)

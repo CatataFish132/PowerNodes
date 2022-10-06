@@ -15,4 +15,4 @@ function generate_demand(settings)
 end
 
 demand = generate_demand(settings_demand)
-# plot_data("objects/demand", vec(demand))
+plot_data("objects/demand", vec(demand), "Demand")
