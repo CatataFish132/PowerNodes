@@ -24,3 +24,8 @@ docs/site/
 Manifest.toml
 
 output*
+
+ecar_old
+ecar_old/*
+solar_collectors_not_used
+solar_collectors_not_used/*
