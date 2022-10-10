@@ -5,6 +5,6 @@
     "target grid level": 0,
     "min grid level": -10000,
     "geo": true,
-    "force charge under": 0.2,
-    "force charge to": 0.2
+    "force charge under": 0.1,
+    "force charge to": 0.1
 }

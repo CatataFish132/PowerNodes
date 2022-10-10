@@ -53,3 +53,16 @@ function input_smart_heatpump(e, i)
     return e
 end
 
+function reset_heatpump()
+    global temperature_k, temp_w_k, temp_diff, performance
+    if settings_smart_heatpump["geo"]
+        temperature_k = zeros(length(temperature)).+(15+273)
+    else
+        temperature_k = temperature .+ 273
+    end
+    
+    temp_w_k = settings_smart_heatpump["temperature of water"]+273
+    temp_diff = (temp_w_k) .- temperature_k
+    
+    performance = (temp_w_k./temp_diff).*settings_smart_heatpump["carnot factor"]
+end
