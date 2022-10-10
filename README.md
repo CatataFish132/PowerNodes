@@ -6,7 +6,7 @@ Download and install [julia](https://julialang.org/downloads/)
 
 ## installing dependencies method #1
 
-In the terminal/commandline type julia and press enter. The julia prompt should now appear. Press the `]` key to go to the package manager. now type in `activate .`to activate the current project and type in`instantiate` to install all the packages.
+In the terminal/commandline type `julia` and press enter. The julia prompt should now appear. Press the `]` key to go to the package manager. now type in `activate .`to activate the current project and type in`instantiate` to install all the packages.
 
 ## installing dependencies method #2
 
